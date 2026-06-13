@@ -5,13 +5,14 @@ import { AssetEditor } from '@/components/asset-editor';
 export default async function AssetEditorPage({
   params,
 }: {
-  params: { projectId: string };
+  params: Promise<{ projectId: string }>;
 }) {
+  const { projectId } = await params;
   const supabase = await createClient();
   const { data: project } = await supabase
     .from('projects')
     .select('id, name, tenant_slug')
-    .eq('id', params.projectId)
+    .eq('id', projectId)
     .single();
 
   if (!project) notFound();
@@ -19,7 +20,7 @@ export default async function AssetEditorPage({
   const { data: assets } = await supabase
     .from('generated_assets')
     .select('id, uca_id, asset_type, category, title, slug, summary, status, review_status, sort_order, body_richtext, json_payload, created_at')
-    .eq('project_id', params.projectId)
+    .eq('project_id', projectId)
     .order('category', { ascending: true })
     .order('sort_order', { ascending: true });
 
@@ -32,7 +33,7 @@ export default async function AssetEditorPage({
         </p>
       </div>
       <AssetEditor
-        projectId={params.projectId}
+        projectId={projectId}
         assets={(assets ?? []) as Array<{
           id: string;
           uca_id: string;

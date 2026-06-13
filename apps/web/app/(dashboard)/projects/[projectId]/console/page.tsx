@@ -5,13 +5,14 @@ import { JobConsole } from '@/components/job-console';
 export default async function JobConsolePage({
   params,
 }: {
-  params: { projectId: string };
+  params: Promise<{ projectId: string }>;
 }) {
+  const { projectId } = await params;
   const supabase = await createClient();
   const { data: project } = await supabase
     .from('projects')
     .select('id, name, tenant_slug, status')
-    .eq('id', params.projectId)
+    .eq('id', projectId)
     .single();
 
   if (!project) notFound();
@@ -19,7 +20,7 @@ export default async function JobConsolePage({
   const { data: jobs } = await supabase
     .from('agent_jobs')
     .select('id, status, created_at, updated_at, completed_at, error_message, current_node')
-    .eq('project_id', params.projectId)
+    .eq('project_id', projectId)
     .order('created_at', { ascending: false })
     .limit(10);
 
@@ -44,7 +45,7 @@ export default async function JobConsolePage({
         </p>
       </div>
       <JobConsole
-        projectId={params.projectId}
+        projectId={projectId}
         project={{ id: project.id as string, name: project.name as string, tenantSlug: project.tenant_slug as string }}
         latestJob={latestJob as {
           id: string;

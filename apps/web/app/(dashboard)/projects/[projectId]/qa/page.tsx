@@ -5,13 +5,14 @@ import { QaCenter } from '@/components/qa-center';
 export default async function QaCenterPage({
   params,
 }: {
-  params: { projectId: string };
+  params: Promise<{ projectId: string }>;
 }) {
+  const { projectId } = await params;
   const supabase = await createClient();
   const { data: project } = await supabase
     .from('projects')
     .select('id, name, tenant_slug')
-    .eq('id', params.projectId)
+    .eq('id', projectId)
     .single();
 
   if (!project) notFound();
@@ -20,10 +21,10 @@ export default async function QaCenterPage({
   const { data: latestJob } = await supabase
     .from('agent_jobs')
     .select('id, status, completed_at')
-    .eq('project_id', params.projectId)
+    .eq('project_id', projectId)
     .order('created_at', { ascending: false })
     .limit(1)
-    .single();
+    .maybeSingle();
 
   let qaData = null;
   if (latestJob) {

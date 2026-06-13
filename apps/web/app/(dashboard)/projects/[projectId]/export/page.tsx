@@ -5,13 +5,14 @@ import { ExportCenter } from '@/components/export-center';
 export default async function ExportCenterPage({
   params,
 }: {
-  params: { projectId: string };
+  params: Promise<{ projectId: string }>;
 }) {
+  const { projectId } = await params;
   const supabase = await createClient();
   const { data: project } = await supabase
     .from('projects')
     .select('id, name, tenant_slug')
-    .eq('id', params.projectId)
+    .eq('id', projectId)
     .single();
 
   if (!project) notFound();
@@ -19,7 +20,7 @@ export default async function ExportCenterPage({
   const { data: bundles } = await supabase
     .from('export_bundles')
     .select('id, job_id, status, created_at, bundle_manifest, qa_report')
-    .eq('project_id', params.projectId)
+    .eq('project_id', projectId)
     .order('created_at', { ascending: false })
     .limit(5);
 
@@ -32,7 +33,7 @@ export default async function ExportCenterPage({
         </p>
       </div>
       <ExportCenter
-        projectId={params.projectId}
+        projectId={projectId}
         tenantSlug={project.tenant_slug as string}
         bundles={(bundles ?? []) as Array<{
           id: string;
