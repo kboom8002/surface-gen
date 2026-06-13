@@ -1,0 +1,685 @@
+{
+  "package_name": "wedding_surface_agent_repo_docs_handoff_import_update",
+  "version": "0.10.0-handoff-import",
+  "base": "wedding_surface_agent_repo_docs_tdd_evolution.zip",
+  "generated_at": "2026-06-12T08:27:02.409106Z",
+  "purpose": "Adds external image analysis handoff import and prompt-only AI visual generation handoff workflows to the SDD/TDD repo docs.",
+  "file_count": 135,
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "size": 7783,
+      "sha256": "ab4b81743e5ea433a3974baeac078597891cdfce4d7a64edf4ef801112a2c181"
+    },
+    {
+      "path": "MANIFEST.json",
+      "size": 20948,
+      "sha256": "2507d927c1d6baec310d64977978bc3aefec985e6d58ee0a510a92413dd7420d"
+    },
+    {
+      "path": "README.md",
+      "size": 5718,
+      "sha256": "6c1a2ef9eae01f1e786591782d5b5c4130d4fc14e0b77eb97fb6876167213bcd"
+    },
+    {
+      "path": "docs/00_PROJECT_OVERVIEW.md",
+      "size": 3968,
+      "sha256": "c6dd7123c7f749737384ceaa2635e415ee7c543e54f3aa6d3e03be092547cbff"
+    },
+    {
+      "path": "docs/01_PRODUCT_REQUIREMENTS.md",
+      "size": 3999,
+      "sha256": "eb5a27f2f5fa83534e50614eef788d8fc8eb2d589053c6fbf656da1550dcc160"
+    },
+    {
+      "path": "docs/02_DOMAIN_MODEL.md",
+      "size": 4615,
+      "sha256": "81facbce488a7fed4be969ebc4014a856a6f4b5cb82a350d9876101fbe69c472"
+    },
+    {
+      "path": "docs/04_AGENT_WORKFLOW_SPEC.md",
+      "size": 6882,
+      "sha256": "a9af13308479940a89ba7b9ce6fd193df6133bb53e2b7a9eb11679d471b3b20d"
+    },
+    {
+      "path": "docs/05_DATABASE_SCHEMA_SPEC.md",
+      "size": 17173,
+      "sha256": "5af98e763199b723eb76fc494ff7a86c2dc9deacc3113c620e0b70548d18582d"
+    },
+    {
+      "path": "docs/06_STORAGE_AND_FILE_SPEC.md",
+      "size": 9364,
+      "sha256": "fa0fb366798ffdb28ec79a2be18f6f26c69acf7f6a7b952f831472d5015e93d6"
+    },
+    {
+      "path": "docs/07_API_CONTRACTS.md",
+      "size": 10569,
+      "sha256": "5e3068e49298ca8a50a7998cc30cce56ac3e7194e8a3714aaea735d9bdae69fa"
+    },
+    {
+      "path": "docs/08_FRONTEND_UX_SPEC.md",
+      "size": 4519,
+      "sha256": "14afc647b77729f16be2cc948de907e5d9d51c824d21aeb5bf6f479a5cd08a5e"
+    },
+    {
+      "path": "docs/09_AGENT_PROMPT_AND_TOOL_SPEC.md",
+      "size": 5477,
+      "sha256": "d26e3eb26b4c473d79edcb5f7b0856d7139677fcf7b0e3b780fde6a60d30a8f2"
+    },
+    {
+      "path": "docs/10_SSOT_OUTPUT_CONTRACT.md",
+      "size": 11364,
+      "sha256": "31ca6a98bdf4399447beaaea7d9b8361184568f6b0fb08cc9828cc948da962f2"
+    },
+    {
+      "path": "docs/11_VALIDATION_AND_QA_GATES.md",
+      "size": 8382,
+      "sha256": "412d7f19fa1b4583ad64a7b4b922ea6ced464e04aa24565c43ec79ba9e9dfa6a"
+    },
+    {
+      "path": "docs/12_SECURITY_AND_RLS_SPEC.md",
+      "size": 7289,
+      "sha256": "263f033e96a05d7e02992f7d879f258f296544ce5c08b4a67a036f1fed198ca9"
+    },
+    {
+      "path": "docs/17_MVP_DELIVERY_PLAN.md",
+      "size": 603,
+      "sha256": "18b363944d7022ab7cf8df96d757b277901e741a489345b1d5628316bfb2ba8d"
+    },
+    {
+      "path": "docs/18_BACKLOG_AND_ROADMAP.md",
+      "size": 528,
+      "sha256": "495e82f75f7c262a63b95e85a637e2bdc58cbefbb4344350119ae089f721a568"
+    },
+    {
+      "path": "docs/19_ACCEPTANCE_CRITERIA.md",
+      "size": 6823,
+      "sha256": "a5d629319671fa41c25964602bb2424c7f3e48145cba47b06e24c218e25486c2"
+    },
+    {
+      "path": "docs/agents/AGENT_STATE_SCHEMA.md",
+      "size": 4278,
+      "sha256": "3a051ecaf5cf39fdbacadde5ac465170eb15f55e7ea3189a5d9bfec51c78ce66"
+    },
+    {
+      "path": "docs/agents/AGENT_SYSTEM_OVERVIEW.md",
+      "size": 4131,
+      "sha256": "67d735d0e698b57ea634fd4aceabb7f58389c347d724b8343f56c40560b79dcc"
+    },
+    {
+      "path": "docs/agents/HUMAN_IN_THE_LOOP_SPEC.md",
+      "size": 3891,
+      "sha256": "2f7c6f9a38cc16fedd07398121caa17b0ffe352d40cf907491a4dd674718173a"
+    },
+    {
+      "path": "docs/agents/LANGGRAPH_EDGE_AND_BRANCHING_SPEC.md",
+      "size": 4718,
+      "sha256": "54bdfb0a22e46f1352f5a8d7385fc5980d96d593ae8b94c62e5f08899fd1c952"
+    },
+    {
+      "path": "docs/agents/LANGGRAPH_NODE_SPEC.md",
+      "size": 5852,
+      "sha256": "043c970f3ec05f406635d3171d597c6d9bc6a50129c0522dc048978915da35de"
+    },
+    {
+      "path": "docs/agents/MODEL_ROUTING_POLICY.md",
+      "size": 3432,
+      "sha256": "f6fef69feff55716546cf16297d3b7b8130c2c06f3a7ff96680f608fb984d94d"
+    },
+    {
+      "path": "docs/agents/PROMPT_LIBRARY.md",
+      "size": 5845,
+      "sha256": "ea19755a4a72fee5ab36df4f1e2b435c09812973e688152d9db565975acc4ecf"
+    },
+    {
+      "path": "docs/agents/RETRY_AND_REPAIR_POLICY.md",
+      "size": 4066,
+      "sha256": "e548177450f629f267f84cf74bb69570210b5e8730023b22f42ad53bca75dade"
+    },
+    {
+      "path": "docs/agents/STRUCTURED_OUTPUT_SCHEMAS.md",
+      "size": 6221,
+      "sha256": "2e34146cf2978bf9ec9d998f9654d2ee6c98143d9e7dc5454af63a83554a56fa"
+    },
+    {
+      "path": "docs/agents/TOOL_FUNCTION_SPEC.md",
+      "size": 4742,
+      "sha256": "2b85914b755f1c8c5c9bf784bfb60e4000a4ddd6e05a5ff15f27367a6f540569"
+    },
+    {
+      "path": "docs/backend/BACKGROUND_WORKER_SPEC.md",
+      "size": 4677,
+      "sha256": "ce05561bec6dcd59c0ed1461adedfe5ac8eb510ca88fae4ce231bd29ac9ee582"
+    },
+    {
+      "path": "docs/backend/HANDOFF_IMPORT_SERVICE_SPEC.md",
+      "size": 3900,
+      "sha256": "f871d95623e53fda2d78e048697c0aa0efd2e4d5e77e015b450e08c80a4dbddc"
+    },
+    {
+      "path": "docs/backend/JOB_QUEUE_SPEC.md",
+      "size": 4416,
+      "sha256": "328a05b8c72fdff4fbee4196f197f4d5e5fd0d2637cdbffc64da84ffb6a37206"
+    },
+    {
+      "path": "docs/backend/SUPABASE_RLS_POLICIES.sql",
+      "size": 12725,
+      "sha256": "1e7dbb9150986b242fe24d197a4978a7b86f25f64b07bf7c3995cfd8ee263924"
+    },
+    {
+      "path": "docs/backend/SUPABASE_SCHEMA.sql",
+      "size": 20269,
+      "sha256": "489280a8c3c50f06c3e21492a70f4004d7602e9a251b4434fd7996fef5dee0c5"
+    },
+    {
+      "path": "docs/backend/SUPABASE_STORAGE_BUCKETS.md",
+      "size": 4233,
+      "sha256": "a071c177e46cf3c6f45f86882d04e542b56559675b72620b39a31329a4243745"
+    },
+    {
+      "path": "docs/domain/BRAND_FACTSHEET_SCHEMA.md",
+      "size": 4358,
+      "sha256": "24945506cdbb5983f2b04b891fdb7e61d1d37822d42a6cf5a4dbde4831750571"
+    },
+    {
+      "path": "docs/domain/BRAND_KNOWLEDGE_GRAPH_SPEC.md",
+      "size": 5105,
+      "sha256": "7bc058e507ce7ee9ce186c7512e89ff8b8f7abfd2da87a117726d8c58f805ac5"
+    },
+    {
+      "path": "docs/domain/CLAIM_PROOF_BOUNDARY_GRAPH_SPEC.md",
+      "size": 4256,
+      "sha256": "57b7c68919c80455e455413e10a3675213ef3ff8e6b03155b25c7eb2464eabcf"
+    },
+    {
+      "path": "docs/domain/GNB_IA_SURFACE_CONTRACT.md",
+      "size": 9619,
+      "sha256": "18b084ed75d3acebde541964287b93e6e866e2243d876f698d97c7aed9f476a2"
+    },
+    {
+      "path": "docs/domain/GROWTH_LOOP_SPEC.md",
+      "size": 5468,
+      "sha256": "9944c9c09d7ad3ab60714f0561fe3aad7b5e2bfee7540a087e3b6aeb05accf5f"
+    },
+    {
+      "path": "docs/domain/PHOTO_TAXONOMY_5D_VIBE_SPEC.md",
+      "size": 10265,
+      "sha256": "dda58621a821fc9cbb5dc3774cae717e92d8f73aeea1e79d572eb023d86ae3d2"
+    },
+    {
+      "path": "docs/domain/SCHEMA_ORG_READINESS_SPEC.md",
+      "size": 4081,
+      "sha256": "d7425e9f2fb140ececc96046293cffb6936ff7940620bac69e8215a2fbec70f7"
+    },
+    {
+      "path": "docs/domain/SEO_AEO_GEO_OUTPUT_SPEC.md",
+      "size": 7246,
+      "sha256": "9d929653a046c88dafec0749abd12e2cc10b5fd42a47db2bc5dd89d3ac156df2"
+    },
+    {
+      "path": "docs/domain/UCA_TYPE_MAPPING_WEDDING_SDM.md",
+      "size": 4087,
+      "sha256": "753645fc3a46ad7a5c9e8a70754cf3b7c0e9010b9be795fcb6fd81a54dc77eba"
+    },
+    {
+      "path": "docs/domain/WEDDING_SDM_DOMAIN_GLOSSARY.md",
+      "size": 4752,
+      "sha256": "e084454d1c59f0dfb21e515f1e4b2a5a7bc6f720da3a3f6213eed49762bf0969"
+    },
+    {
+      "path": "docs/domain/ZIP_ONBOARDING_OUTPUT_SPEC.md",
+      "size": 10038,
+      "sha256": "df2e809122c90a0dcfba492bb1221c6ebdc3d5122e90f5994aa9e06666dcc2d0"
+    },
+    {
+      "path": "docs/domain-packs/DOMAIN_PACK_ARCHITECTURE.md",
+      "size": 1211,
+      "sha256": "a68da59a647c0775c2f43edbdfc52f70be0dee6f4b4040cf76c75f7e50d033b6"
+    },
+    {
+      "path": "docs/evolution/AGENT_SELF_REVIEW_CHECKLIST.md",
+      "size": 1197,
+      "sha256": "8929d3de5321f36a841903d2a249667effc3e6fd803161245006f38012eabff6"
+    },
+    {
+      "path": "docs/evolution/AUTONOMOUS_EVOLUTION_PROTOCOL.md",
+      "size": 4402,
+      "sha256": "4eb04d36d94267cfba0fd4e1277b53e139cc91cc29b7c4db7240ffa95342e742"
+    },
+    {
+      "path": "docs/evolution/DOMAIN_EXPANSION_PROTOCOL.md",
+      "size": 1481,
+      "sha256": "b4e89529ea6df08b9e64bc50342ab81ec371719715121fd167c92e621080d173"
+    },
+    {
+      "path": "docs/evolution/REFACTORING_BOUNDARY_POLICY.md",
+      "size": 1192,
+      "sha256": "dc8db9be407a693dc7aa760242be4e5363ac0d127dd886eb6b92a1227afabe4b"
+    },
+    {
+      "path": "docs/evolution/REGRESSION_SAFETY_POLICY.md",
+      "size": 1291,
+      "sha256": "e4876f3182fb775109874dc16417ab91dd084f790feb6ed1ae38a2b97fbb64c1"
+    },
+    {
+      "path": "docs/evolution/RELEASE_EVOLUTION_LOOP.md",
+      "size": 878,
+      "sha256": "f1bfd74d8a343c0baf5f5b7e27c6021341d3e5e65add5a614921e01f4fcef1ec"
+    },
+    {
+      "path": "docs/evolution/SPEC_EVOLUTION_PROTOCOL.md",
+      "size": 1500,
+      "sha256": "c68482685e273ff4b5fbadacb4699dffcfec68c217d605e81dc7d0e15483b2e9"
+    },
+    {
+      "path": "docs/frontend/ASSET_EDITOR_SPEC.md",
+      "size": 2093,
+      "sha256": "38e856d8018f7c6c1670e76c836808d404e66005353df142da14ad6feb63b887"
+    },
+    {
+      "path": "docs/frontend/COMPONENT_INVENTORY.md",
+      "size": 3882,
+      "sha256": "9173f7f4179b065de93b709147ee5526b929b7b34291434a0380a6d322d8755d"
+    },
+    {
+      "path": "docs/frontend/EXPORT_CENTER_SPEC.md",
+      "size": 2541,
+      "sha256": "837e57e337716c2d48211cf5dd95e5e6a6a2de4e990f487c1e72a8d770709479"
+    },
+    {
+      "path": "docs/frontend/HANDOFF_IMPORT_UI_SPEC.md",
+      "size": 2895,
+      "sha256": "7dd955ce4fcd9a4c92bbc6bb557143a0239e92177162567c5287b5ebb61dc854"
+    },
+    {
+      "path": "docs/frontend/JOB_CONSOLE_SPEC.md",
+      "size": 2638,
+      "sha256": "dafe4808fcea3ba11e971f84306df0a073e59c12b45043a58294d53338909100"
+    },
+    {
+      "path": "docs/frontend/NEXT_APP_ROUTING_SPEC.md",
+      "size": 2751,
+      "sha256": "1d8ac7fe1e5e6dd5142816404561006da8c0ccbcb577b3e588a1d0dc70cafd3b"
+    },
+    {
+      "path": "docs/frontend/PAGE_LEVEL_UX_SPEC.md",
+      "size": 4310,
+      "sha256": "d06d2d8ab0194b744610bc54f8f914044d1603f0cef8070ca45ea4d1a4d0aea3"
+    },
+    {
+      "path": "docs/frontend/QA_CENTER_SPEC.md",
+      "size": 2485,
+      "sha256": "27c662451607e369cfd11ec75c9b9827bee723db999d2a768c2aa17d99bf6a3d"
+    },
+    {
+      "path": "docs/frontend/UPLOAD_FLOW_SPEC.md",
+      "size": 2889,
+      "sha256": "4c7d29175dc10d4f043cf21725c52e17efd4f330511aecbbcc641c2d84cda8f6"
+    },
+    {
+      "path": "docs/frontend/VISUAL_SEMANTIC_EDITOR_SPEC.md",
+      "size": 2817,
+      "sha256": "d051098d5e62555485c5d69831a889146943dad0ab94ecddb1cbc0620f384aa5"
+    },
+    {
+      "path": "docs/handoff/AI_VISUAL_GENERATION_HANDOFF_SPEC.md",
+      "size": 5556,
+      "sha256": "8779dd26ac1a7fa8971f81244052a78a2ed63de13404eb6b5ff20ebfa9d17dde"
+    },
+    {
+      "path": "docs/handoff/HANDOFF_IMPORT_OVERVIEW.md",
+      "size": 4305,
+      "sha256": "fc3ac55937820b766b72ac602064c776b4f62c0f79ca5c1a4639e2a7882098e5"
+    },
+    {
+      "path": "docs/handoff/HANDOFF_IMPORT_VALIDATION_SPEC.md",
+      "size": 3767,
+      "sha256": "a6bdf92ed5997e1f08af2da4a5414090d565c8d32a754bf7faa81ddeb7f7cbb0"
+    },
+    {
+      "path": "docs/handoff/HANDOFF_WORKFLOW_INTEGRATION_SPEC.md",
+      "size": 4304,
+      "sha256": "62075775d312a5081cd2baaea1126a4de308cf66c9b48a277227287cec2b3dbf"
+    },
+    {
+      "path": "docs/handoff/IMAGE_ANALYSIS_HANDOFF_IMPORT_SPEC.md",
+      "size": 5594,
+      "sha256": "5f75234430c33196a7b28ecf82424ecc32d6880f7a6fe9e29a1e3870024e4161"
+    },
+    {
+      "path": "docs/qa/12_GATE_VALIDATION_SPEC.md",
+      "size": 3291,
+      "sha256": "4b7a15c715c6d115fbee88f0b08720b89a2f6a2abb2b31eacd2d13ebe520dfa2"
+    },
+    {
+      "path": "docs/qa/DETERMINISTIC_VALIDATOR_SPEC.md",
+      "size": 2903,
+      "sha256": "db99e5b4170307cc1cb4d68b454d6f5143285fa510571e141a3c9061d7a2a7a7"
+    },
+    {
+      "path": "docs/qa/E2E_TEST_SCENARIOS.md",
+      "size": 2163,
+      "sha256": "04e0f8ebdd2d15129bfccd0164caf3a9a4616c188bec17354a76b3250c584bc1"
+    },
+    {
+      "path": "docs/qa/GOLDEN_SAMPLE_PROJECTS.md",
+      "size": 2319,
+      "sha256": "21d05e1bb42c4e5b9d5bd816bfb0d062465242f25385e37451772fcc525cbabd"
+    },
+    {
+      "path": "docs/qa/JSON_SCHEMA_TESTS.md",
+      "size": 2620,
+      "sha256": "2aa6c6e9886788220eb5f2c779e8635e8e9fc4ecea4ba42019826337dc5ed248"
+    },
+    {
+      "path": "docs/qa/RELEASE_CHECKLIST.md",
+      "size": 2213,
+      "sha256": "5871609bdd157c1871e80e73aa8c649112873468d081fed00faaa1009a69ff48"
+    },
+    {
+      "path": "docs/tdd/GOLDEN_FIXTURE_DESIGN.md",
+      "size": 2664,
+      "sha256": "efc505d1e18b42e2f8d3b4cb65905c869bbe95abc98f2345139acbd0e03235f2"
+    },
+    {
+      "path": "docs/tdd/TDD_GUARDRAIL_STRATEGY.md",
+      "size": 4354,
+      "sha256": "1a10fb34469fe2c525ef565aea3462d367c26ba50ed37402dea50ae64ce95067"
+    },
+    {
+      "path": "docs/tdd/TEST_FIRST_AGENT_TASK_PROTOCOL.md",
+      "size": 1742,
+      "sha256": "09e587edc2e2065857eddc371f559ff768df949963db5b215a822a5ab98d66d2"
+    },
+    {
+      "path": "tasks/000_repo_bootstrap.md",
+      "size": 1654,
+      "sha256": "57840016978cf97d4950c4e408f6042335da596ad97ee5b61cf9d05d83ef3a07"
+    },
+    {
+      "path": "tasks/001_install_next_supabase_stack.md",
+      "size": 1441,
+      "sha256": "3a09a9ba0dc0062602b45e7367d5d31d9a6208d1ed5ac7b8bc2769d3a865d0d5"
+    },
+    {
+      "path": "tasks/002_create_shared_schemas_package.md",
+      "size": 1695,
+      "sha256": "6b901937e2b6b440198c81bfe8483481464364b942a943c3479c8f09664e1245"
+    },
+    {
+      "path": "tasks/003_create_supabase_schema.md",
+      "size": 1469,
+      "sha256": "22c44f98f97fc8ce4e3de884cbb0768b011a501f166d76e13184f8f36feea3e6"
+    },
+    {
+      "path": "tasks/004_create_rls_policies.md",
+      "size": 1461,
+      "sha256": "7d420399c62a4a735336e102663f2b88a0b9316d1314ea3d472ec359eaf4d4e9"
+    },
+    {
+      "path": "tasks/005_project_crud_ui.md",
+      "size": 1589,
+      "sha256": "64c9f623e234049cbc090390536f8f0a2bade56668ef753cd589cd49f3324fa6"
+    },
+    {
+      "path": "tasks/006_upload_brand_factsheet.md",
+      "size": 1587,
+      "sha256": "4a63de3507ea9bd37e547b231cb0c77144b3086031b30cfb4bf15354970064f6"
+    },
+    {
+      "path": "tasks/007_upload_images_and_rights.md",
+      "size": 1606,
+      "sha256": "63b0cff581da4ca6a81a13eaea54dd8caacd505825e1e5b392611ba13eabbf1e"
+    },
+    {
+      "path": "tasks/008_agent_job_schema_and_api.md",
+      "size": 1448,
+      "sha256": "4ca31fed37f6482b10a4489413a9b6df4835f411141590162f7e2bfba0f9d21c"
+    },
+    {
+      "path": "tasks/009_langgraph_worker_skeleton.md",
+      "size": 1459,
+      "sha256": "9a153b827d72bdd5b8b786e074b28ae523e16729e7f7c572bb1dbf75f43457a9"
+    },
+    {
+      "path": "tasks/010_input_audit_node.md",
+      "size": 1567,
+      "sha256": "8033f278a87eaef70f761ac198dc1548b81c6dac52b26ed03a62d2f0c2d6e5ca"
+    },
+    {
+      "path": "tasks/011_brand_truth_node.md",
+      "size": 1562,
+      "sha256": "6fba31690e8b40d743c6e7b655ffd9bf77d0ee90b449b62c983d3edc935e9420"
+    },
+    {
+      "path": "tasks/012_semantic_search_strategy_node.md",
+      "size": 1552,
+      "sha256": "92cd45f66833a1113b0fda97cf4e6d848e2c5c26501f88dc96061892b1c87cd7"
+    },
+    {
+      "path": "tasks/013_knowledge_graph_node.md",
+      "size": 1543,
+      "sha256": "80d638f714305d70904d77c3a0f92d193b5a00a391777ed5390b9485d8d64e15"
+    },
+    {
+      "path": "tasks/014_gnb_ia_node.md",
+      "size": 1423,
+      "sha256": "b69dff0b8c6c0bb26d73ddc29f22c1f80c547c11d8226580be7ebdd7b657341f"
+    },
+    {
+      "path": "tasks/015_photo_inventory_node.md",
+      "size": 1416,
+      "sha256": "f5f4adf1a334559b2cd68f7143ff9481e4ab0776ade4225da9c1c8812378172d"
+    },
+    {
+      "path": "tasks/016_photo_taxonomy_node.md",
+      "size": 1491,
+      "sha256": "2b8f33b076124e5da9c35f8912a996c67a2f672a22e11f3f2ada4bb59e1f81fa"
+    },
+    {
+      "path": "tasks/017_photo_docent_node.md",
+      "size": 1458,
+      "sha256": "2964db43090e3a41c227c7b97127483051f62f340299b2ac7fc0afea0495c93a"
+    },
+    {
+      "path": "tasks/018_visual_experience_node.md",
+      "size": 1525,
+      "sha256": "9453b4d726b23eb24ae5edea086a7fd6f2b231232a5223d745bce1ca0a8fbbac"
+    },
+    {
+      "path": "tasks/019_portfolio_generation_node.md",
+      "size": 1543,
+      "sha256": "5f5ecd7332dd775b93a1ef66bd775fe64db11c5355bbcc913d0bad547d3c6b81"
+    },
+    {
+      "path": "tasks/020_catalog_generation_node.md",
+      "size": 1586,
+      "sha256": "999870c5d81851e51c145f33dac085c42a1a47190817c88384d31b0807228ec6"
+    },
+    {
+      "path": "tasks/021_answer_generation_node.md",
+      "size": 1487,
+      "sha256": "be4e27810c0c6b91081dbeccb4ac7737ac8ec01073d9a53e85052ef617245948"
+    },
+    {
+      "path": "tasks/022_article_generation_node.md",
+      "size": 1491,
+      "sha256": "ab600f34f7ba27e9ba4deb918b7535bc312787cff476d5118713e7364df6f79f"
+    },
+    {
+      "path": "tasks/023_about_contact_generation_node.md",
+      "size": 1592,
+      "sha256": "1e33cb970ece7552785d88184faff227e15e947867faf92858e608f8f61caad4"
+    },
+    {
+      "path": "tasks/024_copy_system_node.md",
+      "size": 1481,
+      "sha256": "8c06fbefd1c1097c9db082f2646c3f6329fbbba82d67bb8492aafc6f8724e4ba"
+    },
+    {
+      "path": "tasks/025_ai_visual_os_node.md",
+      "size": 1549,
+      "sha256": "c38dc7a55c1b62da294ddb50e8d0e04e3bbb27652786e6837b9b43cbec8d84cd"
+    },
+    {
+      "path": "tasks/026_crosslink_schema_node.md",
+      "size": 1578,
+      "sha256": "5db599665f7e753ca62d25530e6ac07bc783483d604580fce18156c913bf5692"
+    },
+    {
+      "path": "tasks/027_ssot_materialization_node.md",
+      "size": 1568,
+      "sha256": "faa61b423594f67afd967782faf1ec684851482213b0dbd34c5ecce6215a31f6"
+    },
+    {
+      "path": "tasks/028_validation_12_gates.md",
+      "size": 1486,
+      "sha256": "78b74c6e989bc5245e598294616ffd2d53226b3fb656b82c8c8bf61fde3c5a44"
+    },
+    {
+      "path": "tasks/029_repair_loop.md",
+      "size": 1432,
+      "sha256": "c36ae1a71f80d5f4b41732381a07446d7b0bfe005b15bc89cada33e5e5f65e59"
+    },
+    {
+      "path": "tasks/030_export_json_service.md",
+      "size": 1410,
+      "sha256": "888f598cadc055b04351650ca84d60540c5d11bf1cbe081951510977db2c1930"
+    },
+    {
+      "path": "tasks/031_zip_packaging_service.md",
+      "size": 1446,
+      "sha256": "c501221fcd320593c01896606e63cafc37ac51d87760e7633f6a79ee5b9724e2"
+    },
+    {
+      "path": "tasks/032_job_console_ui.md",
+      "size": 1441,
+      "sha256": "f8e77f8b2949ee8831237342802e24f487d1562248efe52bbc99ed8b44899a72"
+    },
+    {
+      "path": "tasks/033_asset_editor_ui.md",
+      "size": 1436,
+      "sha256": "384a2b17d4d29bdce688926cf079e1f4e125a6ebbab5f7df163db819a2a9bb3c"
+    },
+    {
+      "path": "tasks/034_visual_semantic_editor_ui.md",
+      "size": 1437,
+      "sha256": "be07bdc648d1b489f58d886e61745b745e07a452c0b44581fe04453267dc2042"
+    },
+    {
+      "path": "tasks/035_qa_center_ui.md",
+      "size": 1377,
+      "sha256": "a394df00b84ae507a77958afc9023b8620ff253f84877fcc5dbb7721ce3affac"
+    },
+    {
+      "path": "tasks/036_export_center_ui.md",
+      "size": 1520,
+      "sha256": "e13df1dee638c35bc28c8b8fd438fc6413c315c4b5edb3c478a6cab23413e680"
+    },
+    {
+      "path": "tasks/037_golden_fixture_tests.md",
+      "size": 1420,
+      "sha256": "3a50238ec70963b5a3ff836e80c5cb0ac8336a8e2cdf336e22b4a386912e9fa0"
+    },
+    {
+      "path": "tasks/038_e2e_happy_path.md",
+      "size": 1329,
+      "sha256": "967d9b8c4c98ddf4548cb5f948de0d3b66a519c4aa477b2e5aad36ab866d5b0f"
+    },
+    {
+      "path": "tasks/039_security_rls_tests.md",
+      "size": 1433,
+      "sha256": "1a2195a811f1cca11edf1ccf82dcf6176c8c18df1639ba66426e375e7c59c447"
+    },
+    {
+      "path": "tasks/040_release_candidate.md",
+      "size": 1459,
+      "sha256": "a743cd4bcce7343dd7fa3fe967215b96107cb7a65cceeaa7c37e59a141b76e54"
+    },
+    {
+      "path": "tasks/041_create_tdd_guardrail_suite.md",
+      "size": 1287,
+      "sha256": "7247c2618c5e8beccd643f4287e130557b214e954179521f15f92dc5a3c72c95"
+    },
+    {
+      "path": "tasks/042_create_golden_fixtures.md",
+      "size": 1147,
+      "sha256": "54eac9625a6ceb245423b0fd7fb39747b44632140316d2075acc76a1e47a72eb"
+    },
+    {
+      "path": "tasks/043_create_autonomous_evolution_protocol.md",
+      "size": 1084,
+      "sha256": "2b00025b30f03709dda72999bb60328bba1015bb526ec0532292ceeccc738ed2"
+    },
+    {
+      "path": "tasks/044_create_regression_dashboard.md",
+      "size": 1128,
+      "sha256": "884fb5c890354f7346b694e6f4965e61b5e8df430ad2bdb2015e40bd5dbac4bf"
+    },
+    {
+      "path": "tasks/045_enable_safe_refactor_loop.md",
+      "size": 1039,
+      "sha256": "b0b7aea660dbb49c7784baad38d7d76b69f4bc8f1e7b5fb5a6f16a06406508c8"
+    },
+    {
+      "path": "tasks/046_domain_pack_refactor_plan.md",
+      "size": 1137,
+      "sha256": "41d96e61efc492c4546aa976076ea64f06c94617d8ff773a28ac606416cec274"
+    },
+    {
+      "path": "tasks/047_create_handoff_schema_package.md",
+      "size": 1038,
+      "sha256": "233c11d82377f5d81bd356419ce7c06bf1cce691e5299f1f01835bd840a0f6ad"
+    },
+    {
+      "path": "tasks/048_create_handoff_import_validators.md",
+      "size": 900,
+      "sha256": "06640051f0eed8d320464e2cbe96c201627fda2a836c618db86df51eb0e2036f"
+    },
+    {
+      "path": "tasks/049_add_handoff_database_migration.md",
+      "size": 902,
+      "sha256": "b793f88e463f88f576f41148536de20ea086e0ba9bf0cbf34c23d64cbc34ca85"
+    },
+    {
+      "path": "tasks/050_implement_handoff_import_api_routes.md",
+      "size": 945,
+      "sha256": "03f603eb3f636d0ad399e110b210ee6099454a3802cd564989bf9de115bbcd1a"
+    },
+    {
+      "path": "tasks/051_add_handoff_workflow_nodes.md",
+      "size": 1175,
+      "sha256": "4fe79264f3c3fcd7cc674ac340260eb49f91d5cf8147ad614487e5c4e2265d51"
+    },
+    {
+      "path": "tasks/052_add_handoff_import_ui.md",
+      "size": 1049,
+      "sha256": "8c3f39ee4a57a2ab6dcb5094e21c8740f0a173dedfb36792f9e4bb02f34a9580"
+    },
+    {
+      "path": "tasks/053_integrate_imported_photo_manifest_with_asset_generation.md",
+      "size": 1186,
+      "sha256": "a44b8b0fbe188b03721f8b2b1166bb54d4133348cb8a074db2e22a35bb759abd"
+    },
+    {
+      "path": "tasks/054_integrate_imported_ai_visuals_with_final_export.md",
+      "size": 1138,
+      "sha256": "2044aca0564cd36b7e56d153dfd5607f60a2f43f94c94580e9a52f26809a330d"
+    },
+    {
+      "path": "tests/fixtures/README.md",
+      "size": 138,
+      "sha256": "a68cdbb5d258ac428c000f4dd520de0dbf1d3814ae4df0667294309191f8558c"
+    },
+    {
+      "path": "tests/fixtures/golden-projects/README.md",
+      "size": 243,
+      "sha256": "78856e5f0fb8e727c5bf278b180dec919f3ca31c4e616ad97c5f24d150c562f4"
+    },
+    {
+      "path": "tests/golden/README.md",
+      "size": 216,
+      "sha256": "257a5e2dac8518f3eb56666423b773430cc604d37b643bdf0bc0fe5ca317e106"
+    }
+  ]
+}

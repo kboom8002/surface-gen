@@ -1,0 +1,95 @@
+name: CD (Continuous Deployment)
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  # ─────────────────────────────────────────────────────────────
+  # Job 1: Apply Supabase DB Migrations automatically using setup-db.cjs
+  # ─────────────────────────────────────────────────────────────
+  deploy-migrations:
+    name: Deploy Database Migrations
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run setup-db.cjs
+        # Requires DB_PASSWORD stored in GitHub Secrets
+        run: node setup-db.cjs "${{ secrets.SUPABASE_DB_PASSWORD }}"
+        env:
+          DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+
+  # ─────────────────────────────────────────────────────────────
+  # Job 2: Deploy Next.js Frontend to Vercel (Optional/Template)
+  # ─────────────────────────────────────────────────────────────
+  deploy-frontend:
+    name: Deploy Next.js Web App
+    needs: [deploy-migrations]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Template using Vercel CLI (requires VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID secrets)
+      - name: Install Vercel CLI
+        run: npm install --global vercel
+
+      - name: Pull Vercel Project Info
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+      - name: Build Project Artifacts
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy Project to Production
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+  # ─────────────────────────────────────────────────────────────
+  # Job 3: Build & Deploy Background Worker (Optional/Template)
+  # ─────────────────────────────────────────────────────────────
+  deploy-worker:
+    name: Build & Deploy Worker
+    needs: [deploy-migrations]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # Example: Push to GitHub Container Registry (GHCR)
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and Push Worker Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./apps/worker/Dockerfile # Make sure to create this Dockerfile if deploying
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}/worker:latest
+            ghcr.io/${{ github.repository }}/worker:${{ github.sha }}
