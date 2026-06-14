@@ -71,6 +71,15 @@ export function JobConsole({ projectId, project, latestJob, steps, allJobs }: Jo
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const stepsEndRef = useRef<HTMLDivElement | null>(null);
 
+  // Sync with SSR props on router.refresh()
+  useEffect(() => {
+    setLocalJob(latestJob);
+  }, [latestJob]);
+
+  useEffect(() => {
+    setLocalSteps(steps);
+  }, [steps]);
+
   const isRunning = localJob?.status === 'running' || localJob?.status === 'queued';
 
   // Auto-scroll steps to bottom
@@ -89,16 +98,27 @@ export function JobConsole({ projectId, project, latestJob, steps, allJobs }: Jo
     };
   }, [isRunning, router]);
 
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
   const startJob = async () => {
     setIsStarting(true);
+    setErrorMsg(null);
     try {
       const res = await fetch(`/api/projects/${projectId}/jobs/run`, {
         method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({}),
       });
-      if (!res.ok) throw new Error(await res.text());
+      const data = await res.json();
+      if (!data.ok) {
+        setErrorMsg(data.error?.message || '에이전트 실행에 실패했습니다.');
+        return;
+      }
+      // Start polling for updates
       router.refresh();
     } catch (e) {
       console.error('Failed to start job:', e);
+      setErrorMsg('네트워크 오류가 발생했습니다.');
     } finally {
       setIsStarting(false);
     }
@@ -122,6 +142,16 @@ export function JobConsole({ projectId, project, latestJob, steps, allJobs }: Jo
           🔄 새로고침
         </button>
       </div>
+
+      {/* Error Message */}
+      {errorMsg && (
+        <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700 flex items-center justify-between">
+          <span>❌ {errorMsg}</span>
+          <button onClick={() => setErrorMsg(null)} className="text-red-400 hover:text-red-600 text-xs ml-2">
+            닫기
+          </button>
+        </div>
+      )}
 
       {/* Current Job Status */}
       {localJob ? (

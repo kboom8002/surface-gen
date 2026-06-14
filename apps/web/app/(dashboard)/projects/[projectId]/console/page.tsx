@@ -19,7 +19,7 @@ export default async function JobConsolePage({
 
   const { data: jobs } = await supabase
     .from('agent_jobs')
-    .select('id, status, created_at, updated_at, completed_at, error_message, current_node')
+    .select('id, status, created_at, updated_at, finished_at, error, current_node')
     .eq('project_id', projectId)
     .order('created_at', { ascending: false })
     .limit(10);
@@ -30,11 +30,22 @@ export default async function JobConsolePage({
   if (latestJob) {
     const { data: jobSteps } = await supabase
       .from('agent_job_steps')
-      .select('id, node_name, status, created_at, updated_at, message, error_message')
+      .select('id, node_name, status, created_at, message, error_message')
       .eq('job_id', latestJob.id)
       .order('created_at', { ascending: true });
     steps = jobSteps ?? [];
   }
+
+  // Map DB fields to component props
+  const mappedJob = latestJob ? {
+    id: latestJob.id as string,
+    status: latestJob.status as string,
+    created_at: latestJob.created_at as string,
+    updated_at: latestJob.updated_at as string,
+    ...(latestJob.finished_at ? { completed_at: latestJob.finished_at as string } : {}),
+    ...(latestJob.current_node ? { current_node: latestJob.current_node as string } : {}),
+    ...(latestJob.error ? { error_message: JSON.stringify(latestJob.error) } : {}),
+  } : null;
 
   return (
     <div className="p-6 space-y-6">
@@ -47,17 +58,9 @@ export default async function JobConsolePage({
       <JobConsole
         projectId={projectId}
         project={{ id: project.id as string, name: project.official_brand_name as string, tenantSlug: project.tenant_slug as string }}
-        latestJob={latestJob as {
-          id: string;
-          status: string;
-          created_at: string;
-          updated_at: string;
-          completed_at?: string;
-          current_node?: string;
-          error_message?: string;
-        } | null}
+        latestJob={mappedJob}
         steps={steps}
-        allJobs={(jobs ?? []) as Array<{ id: string; status: string; created_at: string }> }
+        allJobs={(jobs ?? []).map(j => ({ id: j.id as string, status: j.status as string, created_at: j.created_at as string }))}
       />
     </div>
   );
