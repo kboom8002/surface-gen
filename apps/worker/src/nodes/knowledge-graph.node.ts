@@ -1,7 +1,7 @@
-import { createJobStep, completeJobStep } from '../services/job-state-store.js';
-import type { FactoryJobState } from '../state/factory-job-state.js';
+import { createJobStep, completeJobStep } from '../services/job-state-store';
+import type { FactoryJobState } from '../state/factory-job-state';
 import { BrandKnowledgeGraphSchema } from '@surface-gen/schemas';
-import { getModelForTask } from '../services/model-client.js';
+import { getModelForTask } from '../services/model-client';
 
 const SYSTEM_PROMPT = `You are an AI Knowledge Graph Architect specializing in semantic modeling for brands (wedding_sdm industry).
 Build a brand knowledge graph based on the brand truth sheet provided.

@@ -1,6 +1,6 @@
-import { supabaseAdmin } from '../services/supabase-admin.js';
-import { createJobStep, completeJobStep } from '../services/job-state-store.js';
-import type { FactoryJobState } from '../state/factory-job-state.js';
+import { supabaseAdmin } from '../services/supabase-admin';
+import { createJobStep, completeJobStep } from '../services/job-state-store';
+import type { FactoryJobState } from '../state/factory-job-state';
 
 export async function photoInventoryNode(
   state: FactoryJobState,

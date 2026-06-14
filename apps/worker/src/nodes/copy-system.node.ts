@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { createJobStep, completeJobStep } from '../services/job-state-store.js';
-import type { FactoryJobState } from '../state/factory-job-state.js';
-import { getModelForTask } from '../services/model-client.js';
+import { createJobStep, completeJobStep } from '../services/job-state-store';
+import type { FactoryJobState } from '../state/factory-job-state';
+import { getModelForTask } from '../services/model-client';
 
 const CopySystemSchema = z.object({
   brandVoice: z.object({

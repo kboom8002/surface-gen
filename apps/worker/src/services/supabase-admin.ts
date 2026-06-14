@@ -6,8 +6,8 @@ import { createClient } from '@supabase/supabase-js';
  * NEVER expose SUPABASE_SERVICE_ROLE_KEY to browser clients.
  */
 const supabaseUrl =
-  process.env['SUPABASE_URL'] ?? process.env['NEXT_PUBLIC_SUPABASE_URL'] ?? '';
-const serviceRoleKey = process.env['SUPABASE_SERVICE_ROLE_KEY'] ?? '';
+  process.env['SUPABASE_URL'] ?? process.env['NEXT_PUBLIC_SUPABASE_URL'] ?? 'https://dummy.supabase.co';
+const serviceRoleKey = process.env['SUPABASE_SERVICE_ROLE_KEY'] ?? 'dummy-key';
 
 if (!supabaseUrl || !serviceRoleKey) {
   console.warn(

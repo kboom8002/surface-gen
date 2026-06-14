@@ -118,4 +118,8 @@ async function pollLoop(): Promise<void> {
   }
 }
 
-void pollLoop();
+// Only run the poll loop if this file is executed directly (e.g., via tsx)
+// In Vercel serverless environments, we import runJob directly and do not want to poll.
+if (process.argv[1]?.includes('index.ts') || process.argv[1]?.includes('worker')) {
+  void pollLoop();
+}

@@ -1,7 +1,7 @@
-import { createJobStep, completeJobStep } from '../services/job-state-store.js';
-import type { FactoryJobState } from '../state/factory-job-state.js';
+import { createJobStep, completeJobStep } from '../services/job-state-store';
+import type { FactoryJobState } from '../state/factory-job-state';
 import { GnbIaConfigSchema } from '@surface-gen/schemas';
-import { getModelForTask } from '../services/model-client.js';
+import { getModelForTask } from '../services/model-client';
 
 const SYSTEM_PROMPT = `You are a professional UX/IA strategist specializing in the Korean wedding industry (wedding_sdm).
 Generate a GNB (Global Navigation Bar) and Information Architecture configuration for a wedding studio brand based on the brand truth provided.

@@ -1,9 +1,9 @@
 import { createWriteStream, mkdirSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { tmpdir } from 'os';
-import { createJobStep, completeJobStep } from '../services/job-state-store.js';
-import { supabaseAdmin } from '../services/supabase-admin.js';
-import type { FactoryJobState } from '../state/factory-job-state.js';
+import { createJobStep, completeJobStep } from '../services/job-state-store';
+import { supabaseAdmin } from '../services/supabase-admin';
+import type { FactoryJobState } from '../state/factory-job-state';
 
 // ZIP packaging using archiver (installed via worker deps)
 export async function zipPackagingNode(

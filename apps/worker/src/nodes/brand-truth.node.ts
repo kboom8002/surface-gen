@@ -1,8 +1,8 @@
 import { z } from 'zod';
-import type { FactoryJobState, BrandTruthSheet } from '../state/factory-job-state.js';
-import { createJobStep, completeJobStep } from '../services/job-state-store.js';
-import { getModelForTask } from '../services/model-client.js';
-import { supabaseAdmin } from '../services/supabase-admin.js';
+import type { FactoryJobState, BrandTruthSheet } from '../state/factory-job-state';
+import { createJobStep, completeJobStep } from '../services/job-state-store';
+import { getModelForTask } from '../services/model-client';
+import { supabaseAdmin } from '../services/supabase-admin';
 
 const BrandTruthSheetSchema = z.object({
   tenantSlug: z.string(),

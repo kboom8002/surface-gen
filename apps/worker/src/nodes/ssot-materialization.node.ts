@@ -1,6 +1,6 @@
-import { createJobStep, completeJobStep } from '../services/job-state-store.js';
-import { supabaseAdmin } from '../services/supabase-admin.js';
-import type { FactoryJobState } from '../state/factory-job-state.js';
+import { createJobStep, completeJobStep } from '../services/job-state-store';
+import { supabaseAdmin } from '../services/supabase-admin';
+import type { FactoryJobState } from '../state/factory-job-state';
 import {
   UniversalContentAssetSchema,
   FORBIDDEN_PUBLIC_UCA_TYPES,

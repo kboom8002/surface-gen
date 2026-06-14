@@ -1,5 +1,5 @@
-import { createJobStep, completeJobStep } from '../services/job-state-store.js';
-import type { FactoryJobState } from '../state/factory-job-state.js';
+import { createJobStep, completeJobStep } from '../services/job-state-store';
+import type { FactoryJobState } from '../state/factory-job-state';
 import { PhotoTaxonomySchema } from '@surface-gen/schemas';
 
 export async function photoTaxonomyNode(

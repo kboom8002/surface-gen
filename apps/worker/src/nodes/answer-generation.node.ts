@@ -1,10 +1,10 @@
 import { randomUUID } from 'crypto';
 import { z } from 'zod';
-import { createJobStep, completeJobStep } from '../services/job-state-store.js';
-import type { FactoryJobState } from '../state/factory-job-state.js';
-import { getModelForTask } from '../services/model-client.js';
+import { createJobStep, completeJobStep } from '../services/job-state-store';
+import type { FactoryJobState } from '../state/factory-job-state';
+import { getModelForTask } from '../services/model-client';
 import { UniversalContentAssetSchema } from '@surface-gen/schemas';
-import { supabaseAdmin } from '../services/supabase-admin.js';
+import { supabaseAdmin } from '../services/supabase-admin';
 
 const AnswerOutputSchema = z.object({
   answers: z.array(z.object({

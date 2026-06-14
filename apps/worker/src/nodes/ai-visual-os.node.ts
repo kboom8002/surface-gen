@@ -1,6 +1,6 @@
 import { randomUUID } from 'crypto';
-import { createJobStep, completeJobStep } from '../services/job-state-store.js';
-import type { FactoryJobState } from '../state/factory-job-state.js';
+import { createJobStep, completeJobStep } from '../services/job-state-store';
+import type { FactoryJobState } from '../state/factory-job-state';
 
 // AI visuals: can_represent_actual_work ALWAYS false
 // NEVER use AI visuals as portfolio proof
