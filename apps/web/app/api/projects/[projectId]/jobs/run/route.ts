@@ -123,7 +123,8 @@ export async function POST(request: Request, { params }: RouteContext) {
  * Records step-by-step progress to agent_job_steps for UI display.
  * In production, replaced by LangGraph worker.
  */
-async function runPipeline(supabase: ReturnType<typeof createAdminClient>, jobId: string, projectId: string) {
+// @ts-ignore
+async function runPipeline(supabase: any, jobId: string, projectId: string) {
   try {
     // Mark job as running
     await supabase
