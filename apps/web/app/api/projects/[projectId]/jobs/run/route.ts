@@ -1,5 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
-import { createClient as createAdminClient } from '@supabase/supabase-js';
+import { createClient as createAdminClient, SupabaseClient } from '@supabase/supabase-js';
 import { NextResponse } from 'next/server';
 
 /**
@@ -110,8 +110,7 @@ export async function POST(request: Request, { params }: RouteContext) {
   }
 
   // Return immediately, run pipeline in background (fire-and-forget)
-  // eslint-disable-next-line @typescript-eslint/no-floating-promises
-  runPipeline(adminSupabase, job.id as string, projectId);
+  void runPipeline(adminSupabase, job.id as string, projectId);
 
   return NextResponse.json(
     { ok: true, data: { jobId: job.id, status: 'queued' } },
@@ -124,8 +123,7 @@ export async function POST(request: Request, { params }: RouteContext) {
  * Records step-by-step progress to agent_job_steps for UI display.
  * In production, replaced by LangGraph worker.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-async function runPipeline(supabase: any, jobId: string, projectId: string) {
+async function runPipeline(supabase: ReturnType<typeof createAdminClient>, jobId: string, projectId: string) {
   try {
     // Mark job as running
     await supabase
