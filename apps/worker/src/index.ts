@@ -57,6 +57,18 @@ async function runJob(jobId: string): Promise<void> {
     return;
   }
 
+  // Load source files and images for inputs
+  const { data: files } = await supabaseAdmin
+    .from('source_files')
+    .select('id')
+    .eq('project_id', project['id'] as string)
+    .in('file_type', ['brand_factsheet', 'other']);
+
+  const { data: images } = await supabaseAdmin
+    .from('source_images')
+    .select('id')
+    .eq('project_id', project['id'] as string);
+
   // Build initial state
   const state = createInitialState({
     jobId,
@@ -64,8 +76,8 @@ async function runJob(jobId: string): Promise<void> {
     tenantId: project['id'] as string,
     tenantSlug: project['tenant_slug'] as string,
     inputs: {
-      brandFactsheetFileIds: [],
-      imageFileIds: [],
+      brandFactsheetFileIds: files?.map(f => f.id as string) || [],
+      imageFileIds: images?.map(i => i.id as string) || [],
       preferredLanguage: 'ko',
     },
   });

@@ -64,6 +64,12 @@ export async function POST(
 
     // 4. Insert record into database
     if (fileType === 'brand_factsheet') {
+      let extractedText = null;
+      // Extract text if it's a text-based file
+      if (file.name.endsWith('.txt') || file.name.endsWith('.md') || file.name.endsWith('.json') || file.type.startsWith('text/')) {
+        extractedText = buffer.toString('utf-8');
+      }
+
       const { error: dbError } = await adminSupabase.from('source_files').insert({
         project_id: projectId,
         file_type: 'brand_factsheet',
@@ -72,6 +78,7 @@ export async function POST(
         mime_type: file.type,
         size_bytes: file.size,
         created_by: user.id,
+        extracted_text: extractedText,
       });
       if (dbError) throw dbError;
     } else if (fileType === 'image') {
