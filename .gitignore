@@ -8,3 +8,5 @@ supabase/.temp
 *.tsbuildinfo
 coverage
 .DS_Store
+
+.vercel
