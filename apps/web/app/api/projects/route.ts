@@ -54,13 +54,54 @@ export async function POST(request: Request) {
       );
     }
 
+    // 1. Get user's organization
+    let { data: member } = await supabase
+      .from('organization_members')
+      .select('organization_id')
+      .eq('user_id', user.id)
+      .limit(1)
+      .maybeSingle();
+
+    // 2. Bootstrap organization if missing (manual signup scenario)
+    if (!member) {
+      const { createClient: createAdminClient } = await import('@supabase/supabase-js');
+      const adminSupabase = createAdminClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.SUPABASE_SERVICE_ROLE_KEY!
+      );
+
+      // Ensure profile exists
+      await adminSupabase.from('profiles').upsert({ id: user.id, email: user.email }, { onConflict: 'id' });
+
+      // Create personal organization
+      const { data: newOrg, error: orgError } = await adminSupabase
+        .from('organizations')
+        .insert({ name: 'Personal Workspace', created_by: user.id })
+        .select('id')
+        .single();
+
+      if (orgError || !newOrg) {
+        return NextResponse.json({ ok: false, error: { code: 'ORG_ERROR', message: '조직 생성 실패' } }, { status: 500 });
+      }
+
+      // Add user as owner
+      await adminSupabase
+        .from('organization_members')
+        .insert({ organization_id: newOrg.id, user_id: user.id, role: 'owner' });
+
+      member = { organization_id: newOrg.id };
+    }
+
+    // 3. Insert project with organization_id
     const { data: project, error } = await supabase
       .from('projects')
       .insert({
+        organization_id: member.organization_id,
         official_brand_name: officialBrandName,
         tenant_slug: tenantSlug,
         industry_type: 'wedding_sdm',
         status: 'draft',
+        created_by: user.id,
       })
       .select('id, tenant_slug, official_brand_name, industry_type, status')
       .single();
