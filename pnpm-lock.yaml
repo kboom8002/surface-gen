@@ -45,6 +45,9 @@ importers:
       '@surface-gen/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      '@surface-gen/worker':
+        specifier: workspace:^
+        version: link:../worker
       next:
         specifier: ^15.3.0
         version: 15.5.19(react-dom@19.2.7(react@19.2.7))(react@19.2.7)

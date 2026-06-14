@@ -29,7 +29,7 @@ const POLL_INTERVAL_MS = 5_000;
 /**
  * Run a single claimed job from start to finish.
  */
-async function runJob(jobId: string): Promise<void> {
+export async function runJob(jobId: string): Promise<void> {
   console.log(`[Worker] Starting job: ${jobId}`);
   await updateJobStatus(jobId, 'running', { currentNode: 'intake_audit' });
 

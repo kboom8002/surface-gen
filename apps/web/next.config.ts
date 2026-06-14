@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
     '@surface-gen/schemas',
     '@surface-gen/shared',
     '@surface-gen/ui',
+    '@surface-gen/worker',
+    '@surface-gen/prompts',
+    '@surface-gen/validators',
   ],
 };
 

@@ -38,16 +38,16 @@ export function getModelForTask(taskClass: ModelTaskClass): ChatOpenAI {
 
   switch (taskClass) {
     case 'longform_generation':
-      return new ChatOpenAI({ model: 'gpt-4o', temperature: 0.7, apiKey });
+      return new ChatOpenAI({ model: 'gpt-5.4', temperature: 0.7, apiKey });
     case 'vision_analysis':
-      return new ChatOpenAI({ model: 'gpt-4o', temperature: 0.1, apiKey });
+      return new ChatOpenAI({ model: 'gpt-5.4', temperature: 0.1, apiKey });
     case 'batch_low_risk':
-      return new ChatOpenAI({ model: 'gpt-4o-mini', temperature: 0.5, apiKey });
+      return new ChatOpenAI({ model: 'gpt-5.4', temperature: 0.5, apiKey });
     case 'planner':
     case 'structured_generation':
     case 'validator':
     case 'repair':
     default:
-      return new ChatOpenAI({ model: 'gpt-4o', temperature: 0.3, apiKey });
+      return new ChatOpenAI({ model: 'gpt-5.4', temperature: 0.3, apiKey });
   }
 }

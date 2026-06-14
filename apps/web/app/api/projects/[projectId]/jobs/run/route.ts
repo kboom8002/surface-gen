@@ -1,6 +1,9 @@
 import { createClient } from '@/lib/supabase/server';
 import { createClient as createAdminClient } from '@supabase/supabase-js';
-import { NextResponse } from 'next/server';
+import { NextResponse, after } from 'next/server';
+import { runJob } from '@surface-gen/worker/src/index';
+
+export const maxDuration = 300; // 5 minutes for LangGraph pipeline on Vercel Pro
 
 /**
  * POST /api/projects/:projectId/jobs/run
@@ -88,6 +91,12 @@ export async function POST(request: Request, { params }: RouteContext) {
       { status: 500 },
     );
   }
+
+  // Return immediately, but use Next.js `after()` to ensure the background task
+  // is allowed to run to completion in Vercel Serverless environments.
+  after(() => {
+    return runJob(job.id as string);
+  });
 
   return NextResponse.json(
     { ok: true, data: { jobId: job.id, status: 'queued' } },
