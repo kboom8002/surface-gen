@@ -51,14 +51,20 @@ export function FileDropzone({
   };
 
   const uploadFiles = async (files: File[]) => {
+    if (!files || files.length === 0) return;
+    
     const validFiles = multiple ? files : [files[0]];
+    const filesToUpload = validFiles.filter((f): f is File => f !== undefined);
+    
+    if (filesToUpload.length === 0) return;
+
     setUploading(true);
     
     // Add to status list
-    const newStatuses = validFiles.map(f => ({ name: f.name, status: 'uploading' as const }));
+    const newStatuses = filesToUpload.map(f => ({ name: f.name, status: 'uploading' as const }));
     setFilesStatus(prev => [...newStatuses, ...prev]);
 
-    for (const file of validFiles) {
+    for (const file of filesToUpload) {
       const formData = new FormData();
       formData.append('file', file);
       formData.append('fileType', fileType);
