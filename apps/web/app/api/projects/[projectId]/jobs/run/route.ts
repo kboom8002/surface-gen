@@ -1,6 +1,8 @@
 import { createClient } from '@/lib/supabase/server';
-import { createClient as createAdminClient, SupabaseClient } from '@supabase/supabase-js';
-import { NextResponse } from 'next/server';
+import { createClient as createAdminClient } from '@supabase/supabase-js';
+import { NextResponse, after } from 'next/server';
+
+export const maxDuration = 60;
 
 /**
  * POST /api/projects/:projectId/jobs/run
@@ -109,8 +111,11 @@ export async function POST(request: Request, { params }: RouteContext) {
     );
   }
 
-  // Return immediately, run pipeline in background (fire-and-forget)
-  void runPipeline(adminSupabase, job.id as string, projectId);
+  // Return immediately, but use Next.js `after()` to ensure the background task
+  // is allowed to run to completion in Vercel Serverless environments.
+  after(() => {
+    return runPipeline(adminSupabase, job.id as string, projectId);
+  });
 
   return NextResponse.json(
     { ok: true, data: { jobId: job.id, status: 'queued' } },
