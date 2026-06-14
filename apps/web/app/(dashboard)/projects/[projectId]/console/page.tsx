@@ -11,7 +11,7 @@ export default async function JobConsolePage({
   const supabase = await createClient();
   const { data: project } = await supabase
     .from('projects')
-    .select('id, name, tenant_slug, status')
+    .select('id, official_brand_name, tenant_slug, status')
     .eq('id', projectId)
     .single();
 
@@ -29,7 +29,7 @@ export default async function JobConsolePage({
 
   if (latestJob) {
     const { data: jobSteps } = await supabase
-      .from('job_steps')
+      .from('agent_job_steps')
       .select('id, node_name, status, created_at, updated_at, message, error_message')
       .eq('job_id', latestJob.id)
       .order('created_at', { ascending: true });
@@ -41,12 +41,12 @@ export default async function JobConsolePage({
       <div>
         <h1 className="text-2xl font-bold text-gray-900">잡 콘솔</h1>
         <p className="text-gray-500 mt-1">
-          <span className="font-medium">{project.name as string}</span> — AI 에이전트 실행 현황
+          <span className="font-medium">{project.official_brand_name as string}</span> — AI 에이전트 실행 현황
         </p>
       </div>
       <JobConsole
         projectId={projectId}
-        project={{ id: project.id as string, name: project.name as string, tenantSlug: project.tenant_slug as string }}
+        project={{ id: project.id as string, name: project.official_brand_name as string, tenantSlug: project.tenant_slug as string }}
         latestJob={latestJob as {
           id: string;
           status: string;
