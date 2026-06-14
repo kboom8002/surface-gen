@@ -74,20 +74,25 @@ export async function POST(request: Request) {
       await adminSupabase.from('profiles').upsert({ id: user.id, email: user.email }, { onConflict: 'id' });
 
       // Create personal organization
+      const orgSlug = `org-${user.id.substring(0, 8)}`;
       const { data: newOrg, error: orgError } = await adminSupabase
         .from('organizations')
-        .insert({ name: 'Personal Workspace', created_by: user.id })
+        .insert({ name: 'Personal Workspace', slug: orgSlug, created_by: user.id })
         .select('id')
         .single();
 
       if (orgError || !newOrg) {
-        return NextResponse.json({ ok: false, error: { code: 'ORG_ERROR', message: '조직 생성 실패' } }, { status: 500 });
+        return NextResponse.json({ ok: false, error: { code: 'ORG_ERROR', message: `조직 생성 실패: ${orgError?.message}` } }, { status: 500 });
       }
 
       // Add user as owner
-      await adminSupabase
+      const { error: memberError } = await adminSupabase
         .from('organization_members')
         .insert({ organization_id: newOrg.id, user_id: user.id, role: 'owner' });
+        
+      if (memberError) {
+        return NextResponse.json({ ok: false, error: { code: 'ORG_MEMBER_ERROR', message: `조직 멤버 추가 실패: ${memberError?.message}` } }, { status: 500 });
+      }
 
       member = { organization_id: newOrg.id };
     }
